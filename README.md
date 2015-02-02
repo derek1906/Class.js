@@ -5,7 +5,7 @@ Provides a simple method of constructing classes with inheritance, nonstatic and
 method is called.
 
 ##Example
-````
+````js
 //Create a new class
 var ClassA = Class.create({
 	//constructor
