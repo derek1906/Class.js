@@ -6,15 +6,26 @@ method is called.
 
 ##Example
 ````
+//Create a new class
 var ClassA = Class.create({
+	//constructor
     init: function(value){
+    	//"this" can directly be used
         this.value = value;
     },
+    //instance method
     print: fuction(){
         console.log(this.value);
-    }
-}), ClassB = ClassA.extends({
+    },
+    //static methods
+    static: {
+		foo: function(){
+			console.log("bar");
+		}
+	}
+}), ClassB = ClassA.extends({    //ClassB inherits from ClassA
     init: function(value){
+    	//._super can be used to reference a method's super function
         this._super(value);
     }
 }),
@@ -24,4 +35,15 @@ objB instanceof ClassA;                      //true
 objA instanceof ClassB;                      //false
 !!objA.print;                                //true
 !!objB.print;                                //true
+````
+
+Notice that if a class is created with `.create`, then any instances of this class will not be an instance of `Object`. To inherit properly from `Object`, you will need to do:
+
+````
+var Person = Class.extends({
+	init: function(){
+		//...
+	}
+	//...
+}, Object);
 ````
